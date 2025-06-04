@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Tayler a Wife</title>
+  <style>
+    :root {
+      --light-gray: #f2f0f0;
+      --gray: #e3e3e3;
+      --dark-gray: #919191;
+      --darker-gray: #545454;
+      --logo-blue: #1D4ED8;
+      --darker-blue: #1E40AF;
+      --lighter-blue: #60A5FA;
+      --even-lighter-blue: #BFDBFE;
+      --lightest-blue: #DBEAFE;
+      --red: #FF0000;
+      --dark-orange: #ED0707;
+      --light-orange: #f9c56c;
+      --even-lighter-orange: #fcdbb8;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: var(--gray);
+      font-family: verdana, arial, sans-serif, helvetica;
+      color: black;
+    }
+    
+    .container {
+      width: 810px;
+      max-width: 100%;
+      margin: 0 auto 10px;
+      box-shadow: 0px 1px 10px black;
+    }
+    
+    header {
+      background-image: linear-gradient(#d0d2d6, white, #9fb4cb);
+      padding: 20px;
+      text-align: center;
+      border: ridge white 3px;
+    }
+    
+    h1 {
+      font-size: 55px;
+      color: white;
+      text-shadow: 0px 5px 5px #4d6c8e;
+      border: ridge 3px white;
+      border-radius: 5px;
+      background: linear-gradient(white, #9fb4cb);
+      text-align: center;
+      padding: 15px;
+      margin: 0;
+    }
+    
+    nav {
+      background-image: linear-gradient(lightgray, white, #9fb4cb);
+      border: ridge white 2px;
+      box-shadow: 0px 5px 10px gray;
+      margin-bottom: 10px;
+      text-align: center;
+      padding: 5px 0;
+    }
+    
+    nav a {
+      color: #707e8e;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    
+    nav a:hover {
+      color: black;
+      text-decoration: underline;
+    }
+    
+    main {
+      background: white;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .left-column {
+      flex: 0 0 40%;
+      padding: 15px;
+      background-image: linear-gradient(#ebebeb, white, #ebebeb, lightgray);
+    }
+    
+    .right-column {
+      flex: 0 0 60%;
+      padding: 15px;
+      background: linear-gradient(to bottom, white, lightgray, #9fb4cb, #4d6c8e);
+    }
+    
+    @media (max-width: 768px) {
+      .left-column, .right-column {
+        flex: 0 0 100%;
+      }
+    }
+    
+    .profile-section {
+      border: ridge 3px white;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      background-image: linear-gradient(#ebebeb, white, #ebebeb, lightgray);
+    }
+    
+    .profile-section .heading {
+      background: linear-gradient(to left, #b8c8d9, lightgray, #2d4054);
+      color: white;
+      padding: 2px 7px;
+      text-shadow: 0px 2px 2px #33485e;
+      border-radius: 5px 5px 0 0;
+    }
+    
+    .profile-section .heading h4 {
+      margin: 0;
+      display: inline-block;
+    }
+    
+    .profile-section .inner {
+      padding: 10px;
+    }
+    
+    .profile-pic {
+      width: 100%;
+      margin-bottom: 10px;
+      border: ridge 3px white;
+      border-radius: 5px;
+      box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-pic:hover {
+      transform: scale(1.03);
+    }
+    
+    .blurbs .section h4 {
+      color: var(--dark-orange);
+      margin: 10px 0 5px 0;
+    }
+    
+    .blurbs .section p {
+      margin: 0 0 15px 0;
+    }
+    
+    .interests {
+      width: 100%;
+    }
+    
+    table.details-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 3px;
+    }
+    
+    .details-table td:first-child {
+      background: var(--even-lighter-blue);
+      color: var(--logo-blue);
+      font-weight: bold;
+      width: 33%;
+      padding: 5px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px gray;
+    }
+    
+    .details-table td {
+      background: var(--lightest-blue);
+      padding: 5px;
+      vertical-align: top;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px gray;
+    }
+    
+    .details-table td p {
+      margin: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      color: #8b9ab3;
+    }
+    
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .photo-container {
+      border: ridge 3px white;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+    
+    .photo-container:hover {
+      transform: scale(1.05);
+    }
+    
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    footer {
+      text-align: center;
+      font-size: 70%;
+      margin: 10px 0 10px;
+      padding: 10px 5px;
+      background-color: var(--gray);
+      border: ridge 3px white;
+      border-radius: 5px;
+      background: linear-gradient(to bottom, #b8c8d9, lightgray, #2d4054);
+    }
+    
+    footer p {
+      margin: 5px 0;
+      color: white;
+    }
+    
+    .contact-form {
+      margin-top: 20px;
+      background: linear-gradient(to bottom right, #babecd, white, #5c74ac);
+      border: ridge 3px;
+      border-radius: 5px;
+      padding: 15px;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #4d6c8e;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .form-group textarea {
+      height: 100px;
+    }
+    
+    button[type="submit"] {
+      background: #ED0707;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    button[type="submit"]:hover {
+      background: #FF0000;
+    }
+    
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .profile-pic.animated {
+      animation: spin 20s infinite linear;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Find Tayler a Wife</h1>
+    </header>
+    
+    <nav>
+      <a href="#about">About</a> | 
+      <a href="#interests">Interests</a> | 
+      <a href="#photos">Photos</a> | 
+      <a href="#contact">Contact</a>
+    </nav>
+    
+    <main>
+      <div class="left-column">
+        <div class="profile-section">
+          <div class="heading">
+            <h4>About Tayler</h4>
+          </div>
+          <div class="inner">
+            <img src="tayler/14799b3c-c890-4465-8581-fba2ebf5e2ba.jpg" alt="Tayler" class="profile-pic animated">
+            <div class="blurbs">
+              <div class="section" id="about">
+                <h4>Mission Statement:</h4>
+                <p>We're on a mission to find Tayler the perfect wife! Tayler is an adventurous, kind-hearted guy with a great sense of humor. He's ready to settle down with someone special who shares his zest for life.</p>
+              </div>
+              <div class="section">
+                <h4>Status:</h4>
+                <p>✧₊⁺ Actively seeking his future wife ✧₊⁺</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="profile-section interests" id="interests">
+          <div class="heading">
+            <h4>Tayler's Interests</h4>
+          </div>
+          <div class="inner">
+            <table class="details-table" cellspacing="3" cellpadding="3">
+              <tbody>
+                <tr>
+                  <td><p>Hobbies</p></td>
+                  <td><p>Mountain Biking, volleyball, outdoor adventures, traveling, photography, and spending time with friends and family.</p></td>
+                </tr>
+                <tr>
+                  <td><p>Music</p></td>
+                  <td><p>A wide range of genres - ask him about his favorite bands!</p></td>
+                </tr>
+                <tr>
+                  <td><p>Movies</p></td>
+                  <td><p>Action, comedy, and documentaries.</p></td>
+                </tr>
+                <tr>
+                  <td><p>Food</p></td>
+                  <td><p>Enjoys trying new cuisines and restaurants. Has a passion for good food and drinks.</p></td>
+                </tr>
+                <tr>
+                  <td><p>Ideal Date</p></td>
+                  <td><p>A motorcycle ride to a scenic location, followed by a picnic or dinner at a nice restaurant.</p></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="right-column">
+        <div class="profile-section" id="photos">
+          <div class="heading">
+            <h4>Tayler's Photos</h4>
+          </div>
+          <div class="inner">
+            <p>Get to know Tayler through his adventures!</p>
+            <div class="photos">
+              <div class="photo-container">
+                <img src="tayler/IMG_1645.JPEG" alt="Tayler on motorcycle">
+              </div>
+              <div class="photo-container">
+                <img src="tayler/IMG_1664.jpg" alt="Tayler">
+              </div>
+              <div class="photo-container">
+                <img src="tayler/e2fd39b7-ab8d-448c-9e24-f49982b8a3c0.jpg" alt="Tayler with friend">
+              </div>
+              <div class="photo-container">
+                <img src="tayler/IMG_4685.jpeg" alt="Tayler">
+              </div>
+              <div class="photo-container">
+                <img src="tayler/IMG_4841.jpeg" alt="Tayler">
+              </div>
+              <div class="photo-container">
+                <img src="tayler/IMG_4894.jpeg" alt="Tayler">
+              </div>
+              <div class="photo-container">
+                <img src="tayler/IMG_6961.jpeg" alt="Tayler">
+              </div>
+              <div class="photo-container">
+                <img src="tayler/IMG_9804.jpeg" alt="Tayler">
+              </div>
+              <div class="photo-container">
+                <img src="tayler/IMG_9858.jpeg" alt="Tayler">
+              </div>
+              <div class="photo-container">
+                <img src="tayler/IMG_9897.jpg" alt="Tayler">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="profile-section" id="contact">
+          <div class="heading">
+            <h4>Think You Might Be Tayler's Perfect Match?</h4>
+          </div>
+          <div class="inner">
+            <p>If you or someone you know might be interested in meeting Tayler, fill out the form below!</p>
+            
+            <div class="contact-form">
+              <form id="matchForm">
+                <div class="form-group">
+                  <label for="name">Your Name:</label>
+                  <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="message">Why You Think You'd Be a Good Match:</label>
+                  <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>© 2025 Find Tayler a Wife</p>
+      <p>This website was inspired by SpaceHey's nostalgic design.</p>
+    </footer>
+  </div>
+  
+  <script>
+    document.getElementById('matchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thanks for your submission! We\'ll be in touch if there\'s a match.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
